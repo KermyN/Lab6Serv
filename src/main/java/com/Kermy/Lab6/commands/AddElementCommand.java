@@ -1,6 +1,7 @@
 package com.Kermy.Lab6.commands;
 
 import com.Kermy.Lab6.collection.Dragon;
+import com.sun.istack.internal.NotNull;
 
 
 import java.io.Serializable;
@@ -31,7 +32,7 @@ public class AddElementCommand extends Command implements Serializable {
     }
 
     @Override
-    public String execute(CommandReceiver receiver){
+    public String execute(@NotNull CommandReceiver receiver){
         dr.setCreationDate();
         receiver.getCollection().add(dr);
         return "Дракон добавлен успешно!";

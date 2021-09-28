@@ -1,11 +1,10 @@
 package com.Kermy.Lab6.server;
 
 import javax.xml.bind.JAXBException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class ServerMain {
-    public static void main(String[] args) throws JAXBException, FileNotFoundException, IOException {
+    public static void main(String[] args) throws JAXBException, IOException {
 
         if(args.length!=1){
             System.out.println("Укажите в аргументах порт (8080)");

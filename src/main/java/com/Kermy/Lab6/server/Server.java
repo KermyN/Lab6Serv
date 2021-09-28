@@ -26,7 +26,6 @@ import java.util.*;
 public class Server{
     private final int DEFAULT_BUFFER_SIZE = 4096;
     private ServerSocketChannel ssc;
-    private Dragons dragons;
     private IOManager ioManager;
     private CommandReceiver serverReceiver;
     private boolean serverOn = true;
@@ -34,7 +33,7 @@ public class Server{
     private final int port;
     private static Selector selector;
 
-    public void run() throws JAXBException, FileNotFoundException, IOException {
+    public void run() throws JAXBException, IOException {
         ioManager = new IOManager();
         ioManager.writeLine("Запуск сервера.");
         initializeCollection();
@@ -122,7 +121,7 @@ public class Server{
         }
     }
 
-    //•	Модуль отправки ответов клиенту.
+    //	Модуль отправки ответов
     private void sendResponse(String commandResult, SocketChannel channel){
         Response response = new Response(commandResult);
         try {
@@ -174,7 +173,7 @@ public class Server{
         try {
             if(ssc!=null) ssc.close();
             if(selector!=null) selector.close();
-        } catch (IOException ignored) {
+        } catch (IOException i) {
         }
         ssc = null;
         selector = null;
@@ -196,7 +195,6 @@ public class Server{
     }
 
     public Server(int port){
-        this.ioManager = ioManager;
         this.port = port;
     }
 
@@ -239,9 +237,9 @@ public class Server{
                     ioManager.writeLine("Файл существует, попытаемся считать коллекцию");
                 }
             } else {
-                ioManager.writeLine("переменная равна null, использую input.xml");
+                ioManager.writeLine("переменная равна null");
             }
-            dragons = new Dragons();
+            Dragons dragons = new Dragons();
             dragons.uploadData(fileName);
             serverReceiver = new CommandReceiver(dragons);
         } catch (NullPointerException e) {

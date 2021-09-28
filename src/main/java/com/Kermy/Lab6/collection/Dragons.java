@@ -39,7 +39,6 @@ public class Dragons implements Serializable {
             System.out.println("Invalid file");
             System.exit(0);
         }catch (JAXBException et) {
-            System.out.println(et.toString());
             System.out.println("Parsing Error");
             System.exit(0);
         }catch (FileNotFoundException et) {
@@ -253,8 +252,19 @@ public class Dragons implements Serializable {
     }
 
     public String getCollectionInfo() {
-            return "Тип коллекции: " + dragons.getClass() +
-            " Дата инициализации: " + dragons.getInitializationDate()+
-            " Количество элементов: " + dragons.getSize();
+        for (Dragon dragon : dragonHashtable.values()) {
+            return "\nDragon{" +
+                    "id=" + dragon.getId() +
+                    ", name='" + dragon.getName() + '\'' +
+                    ", age=" + dragon.getAge() +
+                    ", coordinates='" + dragon.getCoordinates() + '\'' +
+                    ", color='" + dragon.getColor() + '\'' +
+                    ", type='" + dragon.getType() + '\'' +
+                    ", character='" + dragon.getCharacter() + '\'' +
+                    ", cave='" + dragon.getCave() + '\'' +
+                    ", creationDate='" + dragon.getCreationDate() + '\'' +
+                    '}';
+        }
+        return null;
     }
 }

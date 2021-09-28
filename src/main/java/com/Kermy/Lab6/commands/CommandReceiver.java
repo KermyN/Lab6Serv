@@ -14,8 +14,6 @@ public class CommandReceiver implements Serializable {
 
 
     /**
-     * Gets collection.
-     *
      * @return the collection
      */
     public Dragons getCollection() {
@@ -23,9 +21,7 @@ public class CommandReceiver implements Serializable {
     }
 
     /**
-     * Instantiates a new Command receiver.
-     *
-     * @param collection         the collection
+     * @param collection
      */
     public CommandReceiver(Dragons collection){
         this.collection = collection;
@@ -43,7 +39,7 @@ public class CommandReceiver implements Serializable {
      * Print help.
      */
     public String printHelp(HashMap<String, Command> registeredCommands){
-        //для сортировки по ключу (алфавиту)
+        //для сортировки
         Map<String, Command> treeMap = new TreeMap<>(registeredCommands);
         StringBuilder builder = new StringBuilder();
         for(Map.Entry<String, Command> entry : treeMap.entrySet()){
